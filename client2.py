@@ -298,6 +298,7 @@ class Client:
                         self.tcp_service.put_message(
                             json.dumps({"type": "control", "data": {"flag": "fin", "res": res}}))
                     log_game(f"Match ended: {result_message}")
+                    self.display_message(result_message)
                     self.board = msg_json["data"]
                     self.draw_board()
                     self.udp_service.put_message(json.dumps({"id": self.session_id, "data": -2}))
